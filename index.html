@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>국어 수업 놀이터</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap">
+<style>
+:root{--paper:#f3ecdb;--paper2:#e8dfc8;--ink:#1d1813;--muted:#6b5f4c;--line:#cdbf9d;--seal:#b3362b;--indigo:#2b4a6f;--bg:#161f31}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--paper);font-family:"IBM Plex Sans KR","Malgun Gothic",sans-serif;line-height:1.6}
+header{max-width:1040px;margin:0 auto;padding:44px 20px 18px}
+header .eb{font-size:12px;letter-spacing:.2em;color:#e3c9a0}
+h1{font-family:"Gowun Batang",serif;font-size:clamp(30px,6vw,46px);margin:6px 0 8px;line-height:1.25}
+header p{margin:0;color:#c9d1e0;font-size:15px;max-width:40em}
+main{max-width:1040px;margin:0 auto;padding:6px 20px 50px}
+h2{font-family:"Gowun Batang",serif;font-size:21px;margin:30px 0 12px;display:flex;align-items:center;gap:10px}
+h2 .seal{display:inline-grid;place-items:center;width:30px;height:30px;border:2px solid var(--seal);color:#e8857b;font-size:15px;transform:rotate(-6deg)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px}
+a.card{display:flex;flex-direction:column;background:var(--paper);color:var(--ink);text-decoration:none;border:3px solid var(--ink);box-shadow:0 5px 0 rgba(0,0,0,.45);transition:transform .12s,box-shadow .12s}
+a.card:hover,a.card:focus-visible{transform:translateY(-3px);box-shadow:0 8px 0 rgba(0,0,0,.45);outline:none}
+a.card .pic{aspect-ratio:16/9;background:var(--paper2) center/cover no-repeat;border-bottom:3px solid var(--ink)}
+a.card .tx{padding:13px 15px 14px;display:flex;flex-direction:column;gap:3px;flex:1}
+a.card small{font-size:12px;color:var(--seal);font-weight:600;letter-spacing:.04em}
+a.card b{font-family:"Gowun Batang",serif;font-size:21px;line-height:1.3}
+a.card span{font-size:14px;color:#4a4034}
+a.card em{margin-top:auto;padding-top:8px;font-style:normal;font-size:12.5px;color:var(--indigo);font-weight:600}
+.tools a.card .pic{display:none}
+footer{max-width:1040px;margin:0 auto;padding:0 20px 40px;color:#93a0b8;font-size:13px}
+footer a{color:#c9d1e0}
+</style>
+</head>
+<body>
+<header>
+  <div class="eb">수업용 게임과 도구 모음</div>
+  <h1>국어 수업 놀이터</h1>
+  <p>작품을 끝까지, 제대로 읽기 위해 만든 수업용 게임과 도구를 모아 둔 곳이에요. 설치나 계정 없이 주소만 열면 됩니다. 휴대폰, 크롬북, PC에서 모두 돼요.</p>
+</header>
+<main>
+  <h2><span class="seal">本</span>작품을 걸으며 읽는 게임</h2>
+  <div class="grid" id="games"></div>
+  <h2><span class="seal">具</span>수업 도구</h2>
+  <div class="grid tools" id="tools"></div>
+</main>
+<footer>만든이: 경포고등학교 한예지 · 게임 코드는 AI 도구(Claude)와 함께 만들었어요 · 그림은 AI로 생성했어요<br><span id="upd"></span></footer>
+<script src="links.js"></script>
+<script>
+const esc=t=>String(t).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+const card=l=>`<a class="card" href="${esc(l.url)}"><div class="pic"${l.img?` style="background-image:url('${esc(l.img)}')"`:""}></div><div class="tx"><small>${esc(l.work)}</small><b>${esc(l.title)}</b><span>${esc(l.desc)}</span><em>열기 →</em></div></a>`;
+document.getElementById("games").innerHTML=LINKS.filter(l=>l.kind==="game").map(card).join("");
+document.getElementById("tools").innerHTML=LINKS.filter(l=>l.kind==="tool").map(card).join("");
+const last=LINKS.map(l=>l.date).sort().pop();if(last){const [y,m]=last.split("-");document.getElementById("upd").textContent="마지막으로 더한 때: "+y+"년 "+(+m)+"월 · 모두 "+LINKS.length+"개";}
+</script>
+</body>
+</html>
