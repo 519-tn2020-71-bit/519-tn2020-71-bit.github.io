@@ -1,6 +1,7 @@
 /* 모음 페이지에 실리는 목록. 새로 배포하면 여기에 한 덩어리를 더하고 올리면 된다(위에 있을수록 먼저 나온다).
    kind: "game"(수업용 게임) 또는 "tool"(수업 도구)   img: 표지 그림 주소(없으면 빼도 됨)   date: 처음 배포한 달 */
 const LINKS=[
+  {kind:"game",title:"철산의 귀",work:"고전 소설 「장화홍련전」",desc:"새로 부임한 부사가 되어 진술 속의 속뜻을 듣습니다. 화법·독서(추론적 듣기) 수업용, AI 자유 심문 포함.",url:"https://519-tn2020-71-bit.github.io/janghwa/",img:"https://519-tn2020-71-bit.github.io/janghwa/art/cover.jpg",date:"2026-10"},
   {kind:"game",title:"피리 소리, 바다 건너",work:"고전 소설 「최척전」",desc:"전쟁이 흩어 놓은 가족이 지도 위를 건너 다시 모이기까지. 최척 편 6장, 옥영 편 6장.",url:"https://519-tn2020-71-bit.github.io/choicheok/",img:"https://519-tn2020-71-bit.github.io/choicheok/art/cover.jpg",date:"2026-10"},
   {kind:"game",title:"연광정의 북소리",work:"고전 소설 「옥단춘전」",desc:"저버린 약속과 지킨 믿음. 이혈룡 편 6장, 옥단춘 편 4장.",url:"https://519-tn2020-71-bit.github.io/okdanchun/",img:"https://519-tn2020-71-bit.github.io/okdanchun/art/cover.jpg",date:"2026-10"},
   {kind:"game",title:"스물여덟 자의 비밀",work:"한글날 · 훈민정음",desc:"집현전 막내 학사가 되어, 훈민정음이 태어나는 순간을 지켜봅니다.",url:"https://519-tn2020-71-bit.github.io/hangeul/",img:"https://519-tn2020-71-bit.github.io/hangeul/art/cover.jpg",date:"2026-10"},
