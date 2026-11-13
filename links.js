@@ -8,6 +8,7 @@ const LINKS=[
   {kind:"game",title:"풍운의 증표",work:"고전 소설 「장풍운전」",desc:"흩어진 가족이 증표로 다시 모이기까지. 장풍운 편 6장, 이경패 편 4장.",url:"https://519-tn2020-71-bit.github.io/jangpungun/",img:"https://519-tn2020-71-bit.github.io/jangpungun/art/cover.jpg",date:"2026-10"},
   {kind:"game",title:"굴러라, 금방울",work:"고전 소설 「금방울전」",desc:"전생의 인연을 되찾기까지, 금방울과 해룡의 이야기.",url:"https://519-tn2020-71-bit.github.io/geumbanguljeon/",img:"https://519-tn2020-71-bit.github.io/geumbanguljeon/art/cover.jpg",date:"2026-09"},
   {kind:"game",title:"비장이 된 아내",work:"고전 소설 「이춘풍전」",desc:"방탕한 남편을 구하러, 아내는 남장을 하고 평양으로 갑니다.",url:"https://519-tn2020-71-bit.github.io/leechunpung/",img:"https://519-tn2020-71-bit.github.io/leechunpung/art/cover.jpg",date:"2026-09"},
+  {kind:"tool",title:"종이에서 튀어나와!",work:"축제 부스",desc:"종이에 그린 그림을 휴대폰으로 찍으면 날아다니며 쏘는 게임의 주인공·총알·적이 됩니다. 점수와 그림이 명예의 전당에 올라갑니다(TV 화면 /board).",url:"https://paper-pop-game.jihan10.workers.dev/",date:"2026-11"},
   {kind:"tool",title:"진짜를 가려라",work:"AI 디지털 선도학교 행사",desc:"AI 글·사진·영상을 가려내는 10일 학급 대항 챌린지. 학번과 PIN 카드로 들어갑니다.",url:"https://ai-check-challenge.jihan10.workers.dev/",date:"2026-11"},
   {kind:"tool",title:"오늘의 우리 조 에이스는?",work:"동료 평가",desc:"모둠 활동 뒤에 쓰는 동료 평가 앱.",url:"https://519-tn2020-71-bit.github.io/ace-app/",date:"2026-05"},
   {kind:"tool",title:"통합 성적·등급 계산기",work:"성적 처리",desc:"등급 컷과 성적을 한 번에 계산합니다.",url:"https://519-tn2020-71-bit.github.io/grade-analysis/",date:"2026-05"}
