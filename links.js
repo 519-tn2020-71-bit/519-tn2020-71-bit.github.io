@@ -15,7 +15,7 @@ const LINKS=[
   {group:"rpg",title:"굴러라, 금방울",work:"고전 소설 「금방울전」",desc:"전생의 인연을 되찾기까지, 금방울과 해룡의 이야기.",url:"https://519-tn2020-71-bit.github.io/geumbanguljeon/",img:"https://519-tn2020-71-bit.github.io/geumbanguljeon/art/cover.jpg",date:"2026-09"},
   {group:"rpg",title:"비장이 된 아내",work:"고전 소설 「이춘풍전」",desc:"방탕한 남편을 구하러, 아내는 남장을 하고 평양으로 갑니다.",url:"https://519-tn2020-71-bit.github.io/leechunpung/",img:"https://519-tn2020-71-bit.github.io/leechunpung/art/cover.jpg",date:"2026-09"},
 
-  {group:"event",title:"진짜를 가려라",work:"AI 판별 9일 챌린지 · 체험판",desc:"AI 글·사진·영상을 가려내는 9일 학급 대항 챌린지를 누구나 해 볼 수 있게 만든 체험판이에요. 기록은 보는 사람의 브라우저에만 남아 실제 행사와 섞이지 않아요.",url:"https://ai-check-demo.jihan10.workers.dev/",soon:true,date:"2026-11"},
+  {group:"event",title:"진짜를 가려라",work:"AI 판별 9일 챌린지 · 체험판",desc:"AI 글·사진·영상을 가려내는 9일 학급 대항 챌린지를 누구나 해 볼 수 있게 만든 체험판이에요. 기록은 보는 사람의 브라우저에만 남아 실제 행사와 섞이지 않아요. 왼쪽 아래 [체험판] 단추로 날짜를 옮길 수 있어요.",test:["학생: 학번 1101 · PIN 0000","담임: teacher1-1 · PIN 000000 (/teacher)","관리 교사: 비밀번호 demo (/teacher)"],url:"https://ai-check-demo.jihan10.workers.dev/",date:"2026-11"},
   {group:"event",title:"스물여덟 자의 비밀",work:"한글날 행사",desc:"집현전 막내 학사가 되어, 훈민정음이 태어나는 순간을 지켜봅니다.",url:"https://519-tn2020-71-bit.github.io/hangeul/",img:"https://519-tn2020-71-bit.github.io/hangeul/art/cover.jpg",date:"2026-10"},
   {group:"event",color:"pink",title:"사회 문제 알리는 영상전",work:"영상 전시",desc:"사회 문제를 알리는 영상을 모아 보는 전시관.",url:"https://files-mentioned-by-the-user-codex-blond.vercel.app/",date:"2026-11"},
   {group:"event",color:"amber",title:"종이에서 튀어나와!",work:"축제 부스 예시 작품",desc:"축제 부스에서 보여 준 예시 작품이에요. 종이에 그린 그림을 휴대폰으로 찍으면 날아다니며 쏘는 게임의 주인공·총알·적이 됩니다.",url:"https://paper-pop-game.jihan10.workers.dev/",date:"2026-11"},
