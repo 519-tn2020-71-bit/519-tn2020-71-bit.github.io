@@ -1,5 +1,5 @@
 /* 첫 화면(index.html)과 QR 한눈에 보기(qr.html)가 함께 쓰는 목록.
-   새로 배포하면 LINKS에 한 덩어리를 더하고 올리면 된다(같은 묶음 안에서는 위에 있을수록 먼저 나온다).
+   새로 배포하면 LINKS에 한 덩어리를 더하고, index.html·qr.html의 links.js?v= 판 번호를 올린 뒤 올린다(휴대폰이 옛 목록을 기억하지 않게)(같은 묶음 안에서는 위에 있을수록 먼저 나온다).
    group: GROUPS의 id   color: 색 표지(없으면 묶음 색)   work: 표지 위 작은 글씨   img: 표지 그림 주소(없으면 묶음 색 표지)   date: 처음 배포한 달
    soon: true면 아직 열리지 않은 주소(카드에 '준비 중'이 붙고 QR에는 안 나옴) */
 const GROUPS=[
