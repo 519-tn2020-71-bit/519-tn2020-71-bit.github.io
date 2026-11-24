@@ -4,41 +4,35 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#0f172a">
-<title>국어 수업 놀이터</title>
+<title>경포고 AI 디지털 수업 작품 모음</title>
+<meta name="description" content="경포고등학교가 AI 디지털 선도학교로 수업과 행사에서 만든 게임·도구·자료 모음">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <link rel="stylesheet" href="site.css">
 </head>
 <body>
 <header class="hero">
   <div class="in">
-    <div class="eb">경포고등학교 · 수업용 게임과 도구</div>
-    <h1>국어 수업 놀이터</h1>
-    <p>작품을 끝까지, 제대로 읽기 위해 만든 수업용 게임과 도구를 모아 둔 곳이에요. 설치나 계정 없이 주소만 열면 됩니다. 휴대폰, 크롬북, PC에서 모두 돼요.</p>
+    <div class="eb">경포고등학교 · AI 디지털 선도학교</div>
+    <h1>AI 디지털 수업 작품 모음</h1>
+    <p>AI 디지털 선도학교로서 수업과 학교 행사에서 직접 만들어 쓴 게임·도구·자료를 모았어요. 설치나 계정 없이 주소만 열면 휴대폰, 크롬북, PC에서 모두 돼요.</p>
     <div class="acts"><a class="btn pri" href="qr.html">QR 한눈에 보기</a><a class="btn" href="yeonsu/">AI 연수 자료</a></div>
   </div>
 </header>
-<main class="wrap">
-  <h2 class="sec">작품을 걸으며 읽는 게임<small id="nG"></small></h2>
-  <div class="grid" id="games"></div>
-  <h2 class="sec">수업 도구와 행사<small id="nT"></small></h2>
-  <div class="grid" id="tools"></div>
-</main>
-<footer class="foot">만든이: 경포고등학교 한예지 · 게임 코드는 AI 도구(Claude)와 함께 만들었어요 · 그림은 AI로 생성했어요<br><span id="upd"></span></footer>
+<main class="wrap" id="main"></main>
+<footer class="foot">만든이: 경포고등학교 한예지 · 코드는 AI 도구(Claude 등)와 함께 만들었어요 · 그림은 AI로 생성했어요<br><span id="upd"></span></footer>
 <script src="links.js"></script>
 <script>
 const esc=t=>String(t).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
-const TINT=["c-blue","c-pink","c-green","c-amber","c-violet","c-teal"];
-const card=(l,i)=>{
-  const cover=l.img
-    ?`<div class="cover img" style="background-image:url('${esc(l.img)}')"><span class="dt">${esc(l.work)}</span><span class="big">${esc(l.title)}</span></div>`
-    :`<div class="cover ${TINT[i%TINT.length]}"><span class="dt">${esc(l.work)}</span><span class="big">${esc(l.title)}</span></div>`;
-  return `<a class="card" href="${esc(l.url)}">${cover}<div class="body"><p>${esc(l.desc)}</p><span class="go">열기 →</span></div></a>`;
+const card=(l,g)=>{
+  const cover=`<div class="cover ${l.img?"img":"c-"+(l.color||g.color)}"${l.img?` style="background-image:url('${esc(l.img)}')"`:""}><span class="dt">${esc(l.work)}</span><span class="big">${esc(l.title)}</span>${l.soon?'<span class="tg">12월 공개 예정</span>':""}</div>`;
+  const test=l.test?`<div class="test"><b>체험 계정</b>${l.test.map(t=>`<span>${esc(t)}</span>`).join("")}</div>`:"";
+  const body=`<div class="body"><p>${esc(l.desc)}</p>${test}<span class="go">${l.soon?"준비 중":"열기 →"}</span></div>`;
+  return l.soon?`<div class="card soon">${cover}${body}</div>`:`<a class="card" href="${esc(l.url)}">${cover}${body}</a>`;
 };
-const G=LINKS.filter(l=>l.kind==="game"),T=LINKS.filter(l=>l.kind==="tool");
-document.getElementById("games").innerHTML=G.map(card).join("");
-document.getElementById("tools").innerHTML=T.map(card).join("");
-document.getElementById("nG").textContent=G.length+"개";
-document.getElementById("nT").textContent=T.length+"개";
+document.getElementById("main").innerHTML=GROUPS.map(g=>{
+  const items=LINKS.filter(l=>l.group===g.id);
+  return `<h2 class="sec"><span class="num" style="background:var(--${g.color})">${items.length}</span>${esc(g.title)}<small>${esc(g.note)}</small></h2><div class="grid">${items.map(l=>card(l,g)).join("")}</div>`;
+}).join("");
 const last=LINKS.map(l=>l.date).sort().pop();if(last){const [y,m]=last.split("-");document.getElementById("upd").textContent="마지막으로 더한 때: "+y+"년 "+(+m)+"월 · 모두 "+LINKS.length+"개";}
 </script>
 </body>
