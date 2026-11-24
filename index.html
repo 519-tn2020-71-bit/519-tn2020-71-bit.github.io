@@ -15,12 +15,12 @@
     <div class="eb">경포고등학교 · AI 디지털 선도학교</div>
     <h1>AI 디지털 수업 작품 모음</h1>
     <p>AI 디지털 선도학교로서 수업과 학교 행사에서 직접 만들어 쓴 게임·도구·자료를 모았어요. 설치나 계정 없이 주소만 열면 휴대폰, 크롬북, PC에서 모두 돼요.</p>
-    <div class="acts"><a class="btn pri" href="qr.html">QR 한눈에 보기</a><a class="btn" href="yeonsu/">AI 연수 자료</a></div>
+    <div class="acts"><a class="btn pri" href="yeonsu/">AI 연수 자료 보기</a></div>
   </div>
 </header>
 <main class="wrap" id="main"></main>
 <footer class="foot">만든이: 경포고등학교 한예지 · 코드는 AI 도구(Claude 등)와 함께 만들었어요 · 그림은 AI로 생성했어요<br><span id="upd"></span></footer>
-<script src="links.js?v=20261124c"></script>
+<script src="links.js?v=20261124e"></script>
 <script>
 const esc=t=>String(t).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
 const card=(l,g)=>{
@@ -29,9 +29,9 @@ const card=(l,g)=>{
   const body=`<div class="body"><p>${esc(l.desc)}</p>${test}<span class="go">${l.soon?"준비 중":"열기 →"}</span></div>`;
   return l.soon?`<div class="card soon">${cover}${body}</div>`:`<a class="card" href="${esc(l.url)}">${cover}${body}</a>`;
 };
-document.getElementById("main").innerHTML=GROUPS.map(g=>{
+document.getElementById("main").innerHTML=GROUPS.map((g,i)=>{
   const items=LINKS.filter(l=>l.group===g.id);
-  return `<h2 class="sec"><span class="num" style="background:var(--${g.color})">${items.length}</span>${esc(g.title)}<small>${esc(g.note)}</small></h2><div class="grid">${items.map(l=>card(l,g)).join("")}</div>`;
+  return `<h2 class="sec"><span class="num" style="background:var(--${g.color})">${i+1}</span>${esc(g.title)}<small>${esc(g.note)} · ${items.length}개</small></h2><div class="grid">${items.map(l=>card(l,g)).join("")}</div>`;
 }).join("");
 const last=LINKS.map(l=>l.date).sort().pop();if(last){const [y,m]=last.split("-");document.getElementById("upd").textContent="마지막으로 더한 때: "+y+"년 "+(+m)+"월 · 모두 "+LINKS.length+"개";}
 </script>

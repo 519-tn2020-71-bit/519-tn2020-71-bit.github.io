@@ -3,68 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#0f172a">
-<title>QR 한눈에 보기</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-<link rel="stylesheet" href="site.css?v=20261124c">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
-<style>
-.qc{cursor:pointer;border:0;padding:0;font:inherit;text-align:left}
-.qc .cover{aspect-ratio:16/9}
-.qc .cover .big{font-size:21px}
-.qc .qr{background:#fff;border-radius:10px;aspect-ratio:1;display:grid;place-items:center;padding:6px;margin:12px 14px 0}
-.qc .qr svg{width:100%;height:100%;display:block}
-.qc .qr.wait{background:var(--card2);color:var(--muted);font-size:14px;font-weight:600;text-align:center}
-.qc .body{padding-top:10px}
-.qc .body .who{font-size:12.5px}
-#big{position:fixed;inset:0;background:rgba(8,12,24,.94);display:none;place-items:center;padding:20px;z-index:9}
-#big.on{display:grid}
-#big .box{background:#fff;color:#0f172a;border-radius:18px;padding:22px;width:min(540px,92vw,calc(100vh - 150px));text-align:center;border-top:10px solid var(--tint,#2563eb)}
-#big .qr{width:100%;margin-bottom:12px}#big .qr svg{width:100%;height:auto;display:block}
-#big b{display:block;font-size:clamp(22px,4vw,30px);font-weight:800;letter-spacing:-.02em}
-#big a{display:block;color:#2563eb;font-size:14px;word-break:break-all;margin-top:4px}
-#big .hint{font-size:12px;color:#64748b;margin-top:10px}
-@media (max-width:520px){.qc .cover .big{font-size:16px}.qc .qr{margin:10px 10px 0}}
-@media print{.hero .acts,#big{display:none!important}}
-</style>
+<title>AI 디지털 수업 작품 모음</title>
+<meta http-equiv="refresh" content="0; url=./">
+<link rel="canonical" href="https://519-tn2020-71-bit.github.io/">
 </head>
-<body>
-<header class="hero">
-  <div class="in">
-    <a class="crumb" href="./">← AI 디지털 수업 작품 모음</a>
-    <h1>QR 한눈에 보기</h1>
-    <p>경포고등학교 AI 디지털 선도학교에서 만든 게임·행사·자료를 QR로 모았어요. 휴대폰 카메라로 비추면 바로 열리고, 카드를 누르면 QR이 크게 보여요.</p>
-    <div class="acts"><button class="btn" type="button" onclick="print()">인쇄하기</button></div>
-  </div>
-</header>
-<main class="wrap" id="list"></main>
-<footer class="foot">경포고등학교 한예지 · <span id="cnt"></span></footer>
-<div id="big" role="dialog" aria-modal="true" aria-label="QR 크게 보기"><div class="box"><div class="qr"></div><b></b><a target="_blank" rel="noopener"></a><div class="hint">아무 곳이나 누르거나 Esc를 누르면 닫혀요</div></div></div>
-<script src="links.js?v=20261124c"></script>
-<script>
-const esc=t=>String(t).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
-const qrSvg=url=>{try{const q=qrcode(0,"M");q.addData(url);q.make();return q.createSvgTag({cellSize:4,margin:2,scalable:true});}catch(e){return '<span style="font-size:12px;color:#334155">QR을 만들지 못했어요</span>';}};
-const host=u=>u.replace(/^https?:\/\//,"").replace(/\/$/,"");
-let n=0;
-const card=(l,g)=>{
-  const cover=`<div class="cover ${l.img?"img":"c-"+(l.color||g.color)}"${l.img?` style="background-image:url('${esc(l.img)}')"`:""}><span class="dt">${esc(l.work)}</span><span class="big">${esc(l.title)}</span></div>`;
-  const test=l.test?`<div class="test"><b>체험 계정</b>${l.test.map(t=>`<span>${esc(t)}</span>`).join("")}</div>`:"";
-  if(l.soon)return `<div class="card qc soon">${cover}<div class="qr wait">12월<br>공개 예정</div><div class="body"><div class="who">${esc(host(l.url))}</div>${test}</div></div>`;
-  n++;
-  return `<button type="button" class="card qc" data-url="${esc(l.url)}" data-title="${esc(l.title)}" data-color="${g.color}">${cover}<div class="qr">${qrSvg(l.url)}</div><div class="body">${test}</div></button>`;
-};
-document.getElementById("list").innerHTML=GROUPS.map(g=>{
-  const items=LINKS.filter(l=>l.group===g.id);
-  return `<h2 class="sec"><span class="num" style="background:var(--${g.color})">${items.length}</span>${esc(g.title)}<small>${esc(g.note)}</small></h2><div class="grid">${items.map(l=>card(l,g)).join("")}</div>`;
-}).join("");
-document.getElementById("cnt").textContent="QR "+n+"개";
-const big=document.getElementById("big");
-document.addEventListener("click",e=>{
-  const c=e.target.closest("button.qc");
-  if(c){big.style.setProperty("--tint","var(--"+c.dataset.color+")");big.querySelector(".qr").innerHTML=qrSvg(c.dataset.url);big.querySelector("b").textContent=c.dataset.title;const a=big.querySelector("a");a.href=c.dataset.url;a.textContent=host(c.dataset.url);big.classList.add("on");return;}
-  if(big.classList.contains("on")&&!e.target.closest("#big a"))big.classList.remove("on");
-});
-document.addEventListener("keydown",e=>{if(e.key==="Escape")big.classList.remove("on");});
-</script>
+<body style="background:#0f172a;color:#e2e8f0;font-family:sans-serif;padding:24px">
+<p>QR 한눈에 보기는 없어졌어요. <a href="./" style="color:#7dd3fc">AI 디지털 수업 작품 모음</a>으로 갑니다.</p>
+<script>location.replace("./");</script>
 </body>
 </html>
